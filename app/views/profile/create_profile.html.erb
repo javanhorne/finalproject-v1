@@ -1,0 +1,127 @@
+<div class="container-md">
+<h2 class="mt-3"> Update Profile </h2>
+<hr>
+
+
+<p class="lead"> Patient profile </p>
+
+  <form>
+    <fieldset disabled>
+      <div class="form-group form-row">
+        <label class="col col-form-label" for="disabledTextInput1">First Name</label>
+      
+        <div class=col-sm-4>
+          <input type="text" id="disabledTextInput1" class="form-control" placeholder="Jon">
+        </div>
+          <label class="col col-form-label" for="disabledTextInput2">Last Name</label>
+        <div class=col-sm-4>
+          <input type="text" id="disabledTextInput2" class="form-control" placeholder="Arbuckle">
+        </div>
+      </div>
+
+      
+      <br>
+      
+      <div class="form-group form-row">
+        <label class= "col col-form-label" for="disabledTextInput">Date of Birth</label>
+        <div class="col-md-4">
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="10/27/2019"> <%# PIPE IN THE DOB %>
+        </div>
+        <label class="col col-form-label" for="WeeksOld">Weeks Old</label>
+        <div class="col-md-4">
+          <input type="text" id="WeeksOld" class="form-control" placeholder= <%= Date.parse("Oct 27 2018").step(Date.today, 7).count%>> <%# PIPE IN THE DOB - Check Format as parses DD MM YYYY %>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <label class="col-2 col-form-label " for="disabledTextInput">Gender</label>
+        <div class="col-md-4">
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="Male">
+        </div>
+      </div> 
+    </fieldset>
+  </form>
+
+
+<hr>
+<p class="lead"> Record a diagnosis </p>
+<p>Instructions: Make sure to add all diagnoses. If more than one diagnosis was made at a visit, add each diagnosis as a seperate entry.</p>
+
+
+
+
+<form action="/add_diagnosis" method="post">
+
+  <div class="form-group row">
+    <label for="date" class="col-auto col-form-label">Date</label>
+   <div class="input-group mb-2 col-sm-3">
+      <input class="form-control" type="text" name="date" value="MM/DD/YYYY" id="date">
+      <div class="input-group-append" for="date">
+        <div class="input-group-text" for="date"><a class="fa fa-calendar"></a></div>
+      </div>
+  </div>
+  
+
+
+
+  <label for="icd10" class="col-auto col-form-label">Diagnosis</label>
+    
+  <div class="col">
+    <input type="text" class="form-control" id="icd10" name="icd10" placeholder="Code or name">
+  </div>
+
+  <script src="/autocomplete.js"></script>
+
+    <button class="col-form-label col-auto btn-primary" name="submit" type="submit"> Add diagnosis </button>
+  </div>
+</form>
+
+<hr>
+<div>
+
+
+
+</div>
+
+
+<p>Click button adds to DB</p>
+<p>On render, if profile is non-empty, display all DB rows below entry</p>
+<p>Ensure there is a button to delete/edit incorrect rows</p>
+
+
+<%# <-- Now we display the data entered--> %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Diagnosis Code</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>12/22/2019</td>
+      <td>460</td>
+      <td>Acute nasopharyngitis [common cold]</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>01/15/2020</td>
+      <td>477.1</td>
+      <td>Allergic rhinitis due to food</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>01/15/2020</td>
+      <td>040.41</td>
+      <td>Infant botulism</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+</div>

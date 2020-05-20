@@ -1,0 +1,44 @@
+<h1>Testing API</h1>
+<%# <p>Reply: <%= @reply %> 
+   <%# </p> %>
+<%# <p>Bundle: <%= @bundle %> 
+  <%# </p> %>
+<%# <p>Patient: <%= @patient %> 
+  <%# </p> %>
+<p>Name: <%= @patient_given_name %> <%= @patient_family_name %></p>
+<p>ID: <%= @patient_id %> </p>
+<p>DoB: <%= @patient_dob %> </p>
+<p>Gender: <%= @patient_gender %> </p>
+
+<%# <p>Condition: <%= @condition %>
+ <%# </p> %>
+<%# <p>Condition Reply: <%= @condition_reply %>  
+  <%# </p> %>
+<%# <p>Condition Reply1: <%= @condition_reply1 %> 
+  <%# </p>  %>
+<%# <p>Condition Reply2: <%= @condition_reply2 %> 
+  <%# </p>  %>
+<p>Conditions:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Diagnosis Code (ICD10)</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @condition_reply1.each_with_index do |record, index|%>
+      <tr>
+        <th scope="row"><%=index+1 %> </th>
+          <td><%= record.resource.onsetDateTime %></td> <%# CHECK IF THIS IS THE VISIT DATE OR A DIFFERENT PARAMETER%>
+          <td><%= record.resource.code.coding[0].code %></td>
+          <td><%= record.resource.code.coding[0].display %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+</div>

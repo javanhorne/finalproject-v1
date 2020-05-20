@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
 
-  get("/square/new", { :controller  => "application", :action => "square_new"})
-  get("/square/results", { :controller  => "application", :action => "square_results"})
-  get("/square_root/new", { :controller  => "application", :action => "square_root_new"})
-  get("/square_root/results", { :controller  => "application", :action => "square_root_results"})
+  get("/createprofile", { :controller  => "application", :action => "create_profile"})
+  get("/", {:controller => "application", :action => "home"})
+  get("/test", {:controller => "application", :action => "test"})
+  post("/add_diagnosis", {:controller => "application", :action => "add_diagnosis"})
 
-  get("/payment/new", { :controller  => "application", :action => "payment_new"})
-  get("/payment/results", { :controller  => "application", :action => "payment_results"})
-
-get("/random/new", { :controller  => "application", :action => "random_new"})
-  get("/random/results", { :controller  => "application", :action => "random_results"})
-
+  get("/fhir", { :controller => "api", :action => "fhir_call"})
 
 
 
